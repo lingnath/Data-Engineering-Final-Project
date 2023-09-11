@@ -19,7 +19,7 @@
   - Run the package installation files in the following order: install_packages.sh -> install_docker.sh -> install_docker_compose.sh
   - Run aws configure to set up aws account on the EC2 instance
   - Create a .env file in the following format:
-  ACCESS_KEY=''
+  <br>ACCESS_KEY=''
   <br>SECRET_KEY=''
   - Run the create_docker_containers.sh file
 ## 10. Setup and Run Nifi
