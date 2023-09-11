@@ -30,7 +30,7 @@
   - Inside the JDBC Connection Pool, press the "->" button
   - Make sure the State is enabled. If not, enable it
   - Run the following processors in Nifi UI: InvokeHTTP, ConverterJSONToSQL, PutSQL
-## 12. Recreate Nifi DBCPConnectionPool
+## 12. (If necessary) Recreate Nifi DBCPConnectionPool
   - The DBCPConnectionPool may fail to work. To tell if it failed, the queue for failure, original in ConvertJSONToSQL piles up with none going to the sql route.
   - In this case, delete the DBCPConnectionPool
   - Then in ConvertJSONToSQL processor, re-enter the property for JDBC Connection Pool as "DBCPConnectionPool 1.12.0"
