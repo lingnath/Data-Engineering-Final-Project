@@ -11,8 +11,9 @@
   - Using security group that we created
   - 100 GB of EBS storage
 ## 3. EC2 instance setup
-  - Attach an IAM role that enables S3 full access. To do this, you will need to create an IAM role that has AWS Service as the trusted entity type and the Use case being EC2
+  - Create an IAM role that has AWS Service as the trusted entity type and the Use case being EC2
   - Then attach AmazonS3FullAccess policy to this role
+  - Attach this newly created IAM role to the EC2 instance you're currently running this on
   - Copy the files from this repository into your EC2 instance folders
 ## 4. Setup Folder and Files
   - Run chmod +x <shell script> for all the .sh files
