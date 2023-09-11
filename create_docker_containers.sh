@@ -24,7 +24,7 @@ docker run -dit --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPI
 curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d '{ "name": "inventory-connector", "config": { "connector.class": "io.debezium.connector.mysql.MySqlConnector", "tasks.max": "1", "database.hostname": "mysql", "database.port": "3306", "database.user": "debezium", "database.password": "dbz", "database.server.id": "184054", "database.server.name": "dbserver1", "database.include.list": "demo", "database.history.kafka.bootstrap.servers": "kafka:9092", "database.history.kafka.topic": "dbhistory.demo" } }'
 # Create superset container
 docker pull stantaov/superset-athena:0.0.1
-# Setting the port to be 8088 so that it doesn't conflict with port 8080 that Airflow runs on
+# Setting the port to be 8088 so that it doesn't conflict with port 8080 that Nifi runs on
 docker run -d -p 8088:8088 --name superset stantaov/superset-athena:0.0.1
 docker exec -it superset superset fab create-admin \
                --username admin \
