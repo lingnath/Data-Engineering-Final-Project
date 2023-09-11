@@ -1,5 +1,5 @@
 [aws]
-s3_bucket='de-final-project-nl-test'
-region='ca-central-1'
-athena_db='TEST_de_final_project'
-athena_table='bus_events'
+s3_bucket=''
+region='{same aws region as your ec2 instance}'
+athena_db=''
+athena_table=''
