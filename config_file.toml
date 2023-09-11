@@ -1,0 +1,5 @@
+[aws]
+s3_bucket='de-final-project-nl-test'
+region='ca-central-1'
+athena_db='TEST_de_final_project'
+athena_table='bus_events'
