@@ -26,6 +26,8 @@
   - Create a .env file in the following format:
   <br>ACCESS_KEY=''
   <br>SECRET_KEY=''
+  - Enter your credentials in the .env file
+  - In the config_file.toml, enter the fields according to what you want
   - Run the create_docker_containers.sh file
 ## 5. Setup and Run Nifi
   - Create port forwarding for port 8080 (nifi)
