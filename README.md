@@ -22,6 +22,7 @@
     - AmazonEC2FullAccess
     - AmazonAthenaFullAccess
     - AmazonS3FullAccess
+    - IAMFullAccess
   - Create a .env file in the following format:
   <br>ACCESS_KEY=''
   <br>SECRET_KEY=''
