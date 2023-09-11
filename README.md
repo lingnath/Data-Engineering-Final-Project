@@ -8,7 +8,7 @@
   - Ubuntu
   - t2.xlarge
   - Create or use an existing key pair
-  - With security group that we created
+  - Using security group that we created
   - 100 GB of EBS storage
 ## 3. EC2 instance setup
   - Attach an IAM role that enables S3 full access. To do this, you will need to create an IAM role that has AWS Service as the trusted entity type and the Use case being EC2
