@@ -58,7 +58,7 @@
   - docker exec -it kafka bash
   - bin/kafka-topics.sh --list --zookeeper zookeeper:2181
   - You should see the following topics: dbhistory.demo, dbserver1, dbserver1.demo.bus_status, my-connect-configs, my-connect-offsets, my_connect_statuses
-  - To check if kafka consumer is receiving the changes in the mysql database, enter "bin/kafka-console-consumer.sh --topic dbserver1.demo.bus_status --bootstrap-server '<kafka container_id>':9092"
+  - To check if kafka consumer is receiving the changes in the mysql database, enter "bin/kafka-console-consumer.sh --topic dbserver1.demo.bus_status --bootstrap-server '{kafka container_id}':9092"
   - You should see json data come out
 ## 8. Setup AWS Artifacts
   - Run the following scripts in this order: create_s3_buckets.py -> install_pyspark.sh -> execute_pyspark.sh -> create_athena_database.sh -> create_athena_table.sh
