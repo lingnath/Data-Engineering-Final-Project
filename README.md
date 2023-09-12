@@ -73,6 +73,6 @@ awsathena+rest://{aws access key}:{aws secret access key}@athena.{aws region}.am
   - For the execute_pyspark.sh script you were running in the terminal, press Ctrl+C to stop the script from running
   - For the kafka consumer you were running, also press Ctrl+C to stop the consumer from listening
   - Stop the running processes in the Nifi UI
-  - Stop the running containers by running "docker stop {container name}"
+  - Stop the running containers by running "docker stop $(docker ps -a -q)"
 ## 11. (Optional) Remove AWS Artifacts
   - Once you're done with the project, run the following scripts in this order: remove_athena_table.sh -> remove_athena_database.sh -> remove_s3_buckets.py -> remove_ec2_instance_profile.sh
