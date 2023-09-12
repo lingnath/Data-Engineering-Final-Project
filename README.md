@@ -70,8 +70,8 @@ awsathena+rest://{aws access key}:{aws secret access key}@athena.{aws region}.am
   - Add the necessary datasets in Superset
   - Build dashboards to your heart's content
 ## 10. Stop Streaming Project
-  - For the execute_pyspark.sh script you were running in the terminal, press Ctrl+C to stop the script from running
-  - For the kafka consumer you were running, also press Ctrl+C to stop the consumer from listening
+  - For the execute_pyspark.sh script you were running in the terminal, press Ctrl+c to stop the script from running
+  - For the kafka consumer you were running, also press Ctrl+c to stop the consumer from listening
   - Stop the running processes in the Nifi UI
   - Stop the running containers by running "docker stop $(docker ps -a -q)"
 ## 11. (Optional) Remove AWS Artifacts
