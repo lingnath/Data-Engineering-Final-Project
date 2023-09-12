@@ -12,7 +12,7 @@
   - 100 GB of EBS storage
 ## 3. Setup Folder and Files
   - Copy the files from this repository into your EC2 instance folders
-  - Run chmod +x <shell script> for all the .sh files
+  - Go into the folder and run "chmod +x *.sh" so that all shell script files are executable
   - Run the package installation files in the following order: install_packages.sh -> install_docker.sh -> install_docker_compose.sh
   - Run aws configure to set up aws account on the EC2 instance
   - Ensure the aws account user has the following policies attached
