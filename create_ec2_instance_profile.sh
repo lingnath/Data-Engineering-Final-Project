@@ -2,7 +2,6 @@
 
 ec2_role_instance_profile_name=$(cat config_file.toml | grep 'ec2_role_instance_profile_name' | awk -F "=" '{print $2}' | tr -d "'" | tr -d " ")
 
-
 aws iam create-instance-profile \
  --instance-profile-name ${ec2_role_instance_profile_name}
 
