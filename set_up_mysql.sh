@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Creates the database and table in the MYSQL container
 mysql -u root --password=debezium -e "CREATE DATABASE demo;use demo;CREATE TABLE bus_status (
     record_id INT NOT NULL AUTO_INCREMENT,
     id INT NOT NULL,
