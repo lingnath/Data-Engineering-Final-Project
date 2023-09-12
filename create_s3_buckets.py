@@ -3,6 +3,7 @@ import boto3
 from dotenv import load_dotenv
 import toml
 
+# Loading the variables from the .env and config_file.toml respectively
 load_dotenv('.env')
 app_config = toml.load('config_file.toml')
 s3_bucket = app_config['aws']['s3_bucket']
@@ -10,6 +11,7 @@ aws_region = app_config['aws']['region']
 ACCESS_KEY = os.getenv('ACCESS_KEY')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+# Creating the boto3 session
 session = boto3.Session(
     aws_access_key_id=ACCESS_KEY,
     aws_secret_access_key=SECRET_KEY
