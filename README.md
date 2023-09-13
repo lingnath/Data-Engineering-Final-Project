@@ -29,7 +29,18 @@
   - Go to Create_Containers_and_AWS_Artifacts folder and run "chmod +x *.sh" so that all shell script files are executable
   - Run create_all_artifacts.sh script
   - Attach the newly created ec2 instance profile to the EC2 instance you're currently running this on
-## 5. Setup and Run Nifi
+## 5. Check if mysql is working
+  - docker exec -it mysql bash
+  - mysql -u root -p
+  - Enter "debezium" as password
+  - use demo;
+  - select * from bus_status limit 10;
+  - If the demo database does not exist, this means the set_up_mysql.sh failed to run in the container, likely due to connection issues
+    - In this case, run the following scripts again:
+      - docker cp set_up_mysql.sh mysql:/set_up_mysql.sh
+      - docker exec mysql ./set_up_mysql.sh
+    - Go into the mysql container and check if the demo database and the bus_status table exists. It should work this time.
+## 6. Setup and Run Nifi
   - Create a port forwarding connection for port 8080 (nifi)
   - Enter the nifi UI
   - Import the template (the xml file) into the Nifi UI
@@ -51,17 +62,6 @@
     - Enable this connection pool
     - Ensure ConvertJSONToSQL and PutSQL processors are using the newly recreated DBCPConnectionPool
     - Re-run the following processors in Nifi UI: InvokeHTTP, ConverterJSONToSQL, PutSQL
-## 6. Check if mysql is working
-  - docker exec -it mysql bash
-  - mysql -u root -p
-  - Enter "debezium" as password
-  - use demo;
-  - select * from bus_status limit 10;
-  - If the demo database does not exist, this means the set_up_mysql.sh failed to run in the container, likely due to connection issues
-    - In this case, run the following scripts again:
-      - docker cp set_up_mysql.sh mysql:/set_up_mysql.sh
-      - docker exec mysql ./set_up_mysql.sh
-    - Go into the mysql container and check if the demo database exists and the bus_status table has data. It should work this time.
 ## 7. Check if kafka is connected to debezium
   - docker exec -it kafka bash
   - bin/kafka-topics.sh --list --zookeeper zookeeper:2181
