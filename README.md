@@ -20,7 +20,7 @@
     - AmazonAthenaFullAccess
     - AmazonS3FullAccess
     - IAMFullAccess
-  - Create a .env file in the following format:
+  - In the main folder, create a .env file in the following format:
   <br>ACCESS_KEY=''
   <br>SECRET_KEY=''
   - Enter your credentials in the .env file
@@ -69,7 +69,7 @@
   - To check if kafka consumer is receiving the changes in the mysql database, enter "bin/kafka-console-consumer.sh --topic dbserver1.demo.bus_status --bootstrap-server '{kafka container_id}':9092"
   - You should see json data come out
 ## 8. Execute Streaming Script in Pyspark
-  - Go back to the main folder and run "chmod +x *.sh" so that the shell scripts are executable
+  - In the main folder, run "chmod +x *.sh" so that the shell scripts are executable
   - Run execute_pyspark.sh
 ## 9. Create Dashboards on Superset
   - Create a port forwarding connection for port 8088
