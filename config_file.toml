@@ -1,0 +1,6 @@
+[aws]
+s3_bucket=''
+region='{same aws region as your ec2 instance}'
+athena_db=''
+athena_table=''
+ec2_role_instance_profile_name=''
