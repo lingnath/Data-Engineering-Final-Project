@@ -47,6 +47,7 @@
   - For Database Driver Location(s), enter "/opt/nifi/nifi-current/custom-jars/mysql-connector-java-5.1.17-bin.jar"
   - For Database User, enter "root"
   - For Password, enter "debezium"
+  - Enable this connection pool
   - Ensure PutSQL processor is using the newly recreated DBCPConnectionPool
 ## 6. Check if mysql is working
   - docker exec -it mysql bash
