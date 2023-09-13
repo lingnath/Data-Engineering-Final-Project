@@ -49,7 +49,7 @@
   - For Password, enter "debezium"
   - Enable this connection pool
   - Ensure ConvertJSONToSQL and PutSQL processors are using the newly recreated DBCPConnectionPool
-  - Run the following processors in Nifi UI: InvokeHTTP, ConverterJSONToSQL, PutSQL
+  - Re-run the following processors in Nifi UI: InvokeHTTP, ConverterJSONToSQL, PutSQL
 ## 6. Check if mysql is working
   - docker exec -it mysql bash
   - mysql -u root -p
