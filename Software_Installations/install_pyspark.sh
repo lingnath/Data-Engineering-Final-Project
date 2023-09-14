@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# NOTE: Depending on the time and what software updates have been applied, the packages and jar files below may not work in tandem. In this
-# case, you may need to dig around to find the correct spark, and the hadoop-aws and aws-java-sdk-bundle jar versions to see which
+# NOTE: Depending on the time and what software updates have been applied, the packages and jar files below may not work in tandem. In
+# this case, you may need to dig around to find the correct spark, and the hadoop-aws and aws-java-sdk-bundle jar versions to see which
 # combinatoins of the spark and jar file versions are compatible with each other.
 
 # Moving out of the Software_Installations folder so that the pyspark package gets its own folder
