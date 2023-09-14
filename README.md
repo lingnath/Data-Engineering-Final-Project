@@ -58,6 +58,7 @@
     - Then in ConvertJSONToSQL processor, re-enter the property for JDBC Connection Pool as "DBCPConnectionPool 1.12.0"
     - Press the "->" button
     - Click on gear icon beside the DBCPConnectionPool
+    - Go to Properties tab
     - For Database Connection URL, enter "jdbc:mysql://mysql:3306/demo"
     - For Database Driver Class Name, enter "com.mysql.jdbc.Driver"
     - For Database Driver Location(s), enter "/opt/nifi/nifi-current/custom-jars/mysql-connector-java-5.1.17-bin.jar"
