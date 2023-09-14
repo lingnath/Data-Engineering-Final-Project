@@ -15,6 +15,10 @@
   - Go into the Software_Installations folder and run "chmod +x *.sh" so that all shell script files are executable
   - Run the software installation files in the following order: install_packages.sh -> install_docker.sh -> install_pyspark.sh
   - Run aws configure to set up aws account on the EC2 instance
+    - AWS Access Key ID [None]: {access key}
+    - AWS Secret Access Key [None]: {secret access key}
+    - Default region name [None]: {aws region your EC2 is in}
+    - Default output format [None]: json
   - Ensure the aws account user has the following policies attached
     - AmazonEC2FullAccess
     - AmazonAthenaFullAccess
