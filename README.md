@@ -29,6 +29,11 @@
   <br>SECRET_KEY=''
   - Enter your credentials in the .env file
   - In the config_file.toml, enter the fields according to what you want
+  - (Optional) In Superset there is an option to create a map such that you can render streets and other cool features in your dashboard. This is possible since we have geodata (longitude and latitude) in our dataset. To do this, you need to create a mapbox account and create an access token.
+    - To do so, go to this website: https://account.mapbox.com/
+    - Create an account (if you haven't done so already)
+    - Generate an access token
+    - In the create_docker_containers.sh file, under the "docker run superset" line, enter the access token beside the MAPBOX_API_KEY and **MAKE SURE** the double quotes are not erased.
 ## 4. Create Docker Containers and AWS Artifacts
   - Go to Create_Containers_and_AWS_Artifacts folder and run "chmod +x *.sh" so that all shell script files are executable
   - Run create_all_artifacts.sh script
