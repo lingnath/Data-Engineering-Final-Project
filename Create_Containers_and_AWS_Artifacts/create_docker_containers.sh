@@ -34,7 +34,7 @@ curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" 
 # Create superset container
 docker pull stantaov/superset-athena:0.0.1
 # Setting the port to be 8088 so that it doesn't conflict with port 8080 that Nifi runs on
-docker run -d -p 8088:8088 --name superset stantaov/superset-athena:0.0.1
+docker run -d -e MAPBOX_API_KEY="${mapbox_token}" -p 8088:8088 --name superset stantaov/superset-athena:0.0.1
 docker exec -it superset superset fab create-admin \
                --username admin \
                --firstname Superset \
