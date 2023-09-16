@@ -52,10 +52,13 @@
 ## 6. Setup and Run Nifi
   - Create a port forwarding connection for port 8080 (nifi)
   - Enter the nifi UI
-  - Import the template (the xml file) into the Nifi UI
+  - Import the template (the xml file) into the Nifi UI and select the imported template. You should see a Nifi workflow.
   - In ConvertJSONToSQL processor, right click it and click Configure
-  - Inside the JDBC Connection Pool, press the "->" button
-  - Make sure the State is enabled. If not, enable it
+  - At the value beside the JDBC Connection Pool, press the "->" button
+  - Click on gear icon beside the DBCPConnectionPool
+  - Go to Properties tab
+  - For Password, enter "debezium"
+  - Make sure the State for this connection pool is enabled. If not, enable it.
   - Run the following processors in Nifi UI: InvokeHTTP, ConverterJSONToSQL, PutSQL
   - The DBCPConnectionPool may fail to work. 
     - To tell if it failed, the queue for failure, original in ConvertJSONToSQL piles up with none going to the sql route.
