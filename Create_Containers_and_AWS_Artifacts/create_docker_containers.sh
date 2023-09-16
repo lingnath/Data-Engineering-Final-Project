@@ -12,7 +12,7 @@ docker stop mysql
 sleep 10
 docker start mysql
 sleep 10
-# Set up mysql container
+# Set up mysql container with the database and table creation
 chmod +x set_up_mysql.sh
 docker cp set_up_mysql.sh mysql:/set_up_mysql.sh
 docker exec mysql ./set_up_mysql.sh
