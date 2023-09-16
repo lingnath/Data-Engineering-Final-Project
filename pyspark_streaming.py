@@ -14,7 +14,12 @@ s3_bucket = app_config['aws']['s3_bucket']
 ACCESS_KEY = os.getenv('ACCESS_KEY')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# To go into the pyspark terminal to print the transform_df dataframe to debug potential spark streaming issues, do the following:
+# Sometimes, there may be errors with writing hudi tables to the S3 bucket. 
+# A way to tell is by running the execute_pyspark.sh script and if it exits without you pressing Ctrl+c, then there is likely an issue
+# with the hudi file. The following error will likely pop up in the console: 
+# org.apache.hudi.exception.HoodieKeyException: recordKey value: "null" for field: "record_id" cannot be null or empty.
+# To resolve this, we need to print out the streaming dataframe to figure out if the streaming data is the reason behind this. To do so,
+# we need to go into the pyspark terminal to print the transform_df dataframe. Do the following:
 # In the spark-3.3.3-bin-hadoop3/bin folder, enter the below command:
 # ./pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.1 --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer" --conf "spark.sql.hive.convertMetastoreParquet=false"
 # Once you enter the pyspark terminal, copy and paste all the below code up until transform_df = df.select(col("value").cast("string"))...
