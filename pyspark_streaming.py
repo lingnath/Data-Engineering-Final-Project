@@ -28,7 +28,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 #     .outputMode("append") \
 #     .format("console") \
 #     .start()
-# At this point, you should see the dataframe being constantly being updated with streaming data from Kafka
+# At this point, you should see the dataframe being constantly being updated with streaming data from Kafka. If you see that the streaming data
+# is empty, this means that there are likely issues with mysql, kafka, or debezium connector. In this case, you may need to remove all the
+# containers for this project and recreate them again, via the remove_all_artifacts.sh and create_all_artifacts.sh shell scripts.
+# Or you could just remove them manually.
 
 if __name__ == "__main__":
     spark = SparkSession.builder \
