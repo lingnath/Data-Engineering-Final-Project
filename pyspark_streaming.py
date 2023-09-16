@@ -14,6 +14,17 @@ s3_bucket = app_config['aws']['s3_bucket']
 ACCESS_KEY = os.getenv('ACCESS_KEY')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+# To go into the pyspark terminal to print the transform_df dataframe to debug potential spark streaming issues, do the following:
+# In the spark-3.3.3-bin-hadoop3/bin folder, enter the below command:
+# ./pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.1 --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer" --conf "spark.sql.hive.convertMetastoreParquet=false"
+# Once you enter the pyspark terminal, copy and paste all the below code up until transform_df = df.select(col("value").cast("string"))...
+# Then enter the following code:
+# query = transform_df.writeStream \
+#     .outputMode("append") \
+#     .format("console") \
+#     .start()
+# At this point, you should see the dataframe being constantly being updated with streaming data from Kafka
+
 if __name__ == "__main__":
     spark = SparkSession.builder \
     .appName("S3 access") \
