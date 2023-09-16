@@ -4,10 +4,13 @@
 
 # Create mysql container
 docker run -dit --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:1.6
-# Give the mysql container a few seconds to run so that we can set up sql without there being connection errors
-# docker stop mysql
-# docker start mysql
-echo "Giving 10 seconds for mysql container to boot up"
+# I decided to stop and start the container again so that the error 
+# Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' can be minimized
+echo "Rebooting and giving mysql container time to run to minimize chances of connection errors. Please wait for 30-35 seconds."
+sleep 10
+docker stop mysql
+sleep 10
+docker start mysql
 sleep 10
 # Set up mysql container
 chmod +x set_up_mysql.sh
