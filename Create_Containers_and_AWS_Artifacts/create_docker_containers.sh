@@ -5,6 +5,8 @@
 # Create mysql container
 docker run -dit --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:1.6
 # Give the mysql container a few seconds to run so that we can set up sql without there being connection errors
+# docker stop mysql
+# docker start mysql
 echo "Giving 10 seconds for mysql container to boot up"
 sleep 10
 # Set up mysql container
