@@ -5,7 +5,7 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 import toml
 
-# NOTE: This variable needs to be reviewed if we are working with a new MSK
+# Loading and assigning variables
 BOOTSTRAP_SERVERS = 'localhost:9092'
 load_dotenv('../../.env')
 app_config = toml.load('../../config_file.toml')
@@ -34,18 +34,20 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # Or you could just delete and recreate them manually.
 
 if __name__ == "__main__":
+    # Building spark session with the jar files we downloaded earlier
     spark = SparkSession.builder \
     .appName("S3 access") \
     .config("spark.jars", "../jars/hadoop-aws-3.3.3.jar,../jars/aws-java-sdk-bundle-1.12.451.jar") \
     .getOrCreate()
 
+    # Enabling Spark to read s3 bucket via AWS access and secret access key
     spark._jsc.hadoopConfiguration().set("spark.hadoop.fs.s3a.access.key", ACCESS_KEY)
     spark._jsc.hadoopConfiguration().set("spark.hadoop.fs.s3a.secret.key", SECRET_KEY)
 
-   # NOTE: we cant load the schema file from the local machine anymore, so we have to pull it from s3
+    # Reading schema from s3 bucket
     schema = spark.read.json(f's3a://{s3_bucket}/artifacts/bus_status_schema.json').schema
 
- # We have to connect to the bootstrap servers, instead of kafka:9092
+    # Reading spark streaming from kafka topic in our docker container
     df = spark \
         .readStream \
         .format("kafka") \
@@ -54,11 +56,13 @@ if __name__ == "__main__":
         .option("startingOffsets", "latest") \
         .load()
 
+    # Parsing the data from spark streaming to dataframe format
     transform_df = df.select(col("value").cast("string")).alias("value").withColumn("jsonData",from_json(col("value"),schema)).select("jsonData.payload.after.*")
 
-   # NOTE: We cannot checkpoint to a local machine because we are working on the cloud. S3 is a reliable location for the cluster
+    # Creating checkpoint location for hudi
     checkpoint_location = f"s3a://{s3_bucket}/checkpoints/"
 
+    # Configuring hudi
     table_name = 'bus_status'
     hudi_options = {
        'hoodie.table.name': table_name,
@@ -72,12 +76,15 @@ if __name__ == "__main__":
        'hoodie.insert.shuffle.parallelism': 100
    }
 
+    # Creating output s3 path
     s3_path = f"s3a://{s3_bucket}/output/"
 
+    # Configuring hudi write
     def write_batch(batch_df, batch_id):
        batch_df.write.format("org.apache.hudi") \
        .options(**hudi_options) \
        .mode("append") \
        .save(s3_path)
 
+    # Writing to s3 bucket
     transform_df.writeStream.option("checkpointLocation", checkpoint_location).queryName("wcd-bus-streaming").foreachBatch(write_batch).start().awaitTermination()
