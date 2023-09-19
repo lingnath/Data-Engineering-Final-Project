@@ -5,7 +5,7 @@ cd ..
 # Please replace apt-get with yum if you are using Amazon AMI, which uses RHEL
 sudo apt-get update
 # If you are using Amazon AMI, please change to "sudo yum install java-1.8.0" for the line immediately below
-sudo apt-get install default-jdk
+sudo apt-get install default-jdk -y
 # Getting the Spark package (We will use Spark version 3.3.3)
 wget https://dlcdn.apache.org/spark/spark-3.3.3/spark-3.3.3-bin-hadoop3.tgz
 # Unzip the Spark package
