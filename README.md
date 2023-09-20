@@ -37,7 +37,6 @@
 ## 4. Create Docker Containers and AWS Artifacts
   - Go to Create_Containers_and_AWS_Artifacts folder and run "chmod +x *.sh" so that all shell script files are executable
   - Run create_all_artifacts.sh script
-  - Attach the newly created ec2 instance profile to the EC2 instance you're currently running this on
 ## 5. Check if mysql is working
   - docker exec -it mysql bash
   - mysql -u root -p
