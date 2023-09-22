@@ -21,11 +21,11 @@ aws iam attach-role-policy \
  --role-name ${ec2_role_instance_profile_name} \
  --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess
 
-# Get EC2 instance id
-ec2_instance_id=$(ec2-metadata -i | grep 'instance-id' | awk -F ": " '{print $2}')
-
 # Giving time for aws to detect the newly created instance profile before attaching to our EC2 instance
 sleep 5
+
+# Get EC2 instance id
+ec2_instance_id=$(ec2-metadata -i | grep 'instance-id' | awk -F ": " '{print $2}')
 
 # Attach the iam instance profile to our EC2 instance
 aws ec2 associate-iam-instance-profile --iam-instance-profile Name=${ec2_role_instance_profile_name} --instance-id ${ec2_instance_id}
