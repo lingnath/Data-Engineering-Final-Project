@@ -52,7 +52,7 @@ case $continue in
         echo "[ERROR:] REFER TO THE LOG FOR THE REASON FOR THE FAILURE."
         exit 1
     else
-        echo "EC2 instance profile created. Please attach this to your EC2 instance"
+        echo "EC2 instance profile created."
     fi
 ;;
 esac
