@@ -53,6 +53,7 @@
   - Enter the nifi UI
   - Import the template (the xml file) into the Nifi UI and select the imported template. You should see a Nifi workflow.
   - In ConvertJSONToSQL processor, right click it and click Configure
+  - Go to Properties tab
   - At the value beside the JDBC Connection Pool, press the "->" button
   - Click on gear icon beside the DBCPConnectionPool
   - Go to Properties tab
