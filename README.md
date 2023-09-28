@@ -90,7 +90,8 @@
   - Create a new database by entering the following to connect Superset to Athena:
 awsathena+rest://{aws access key}:{aws secret access key}@athena.{aws region}.amazonaws.com/?s3_staging_dir=s3://{s3 bucket}/superset_metadata&work_group=primary
   - Add the necessary datasets in Superset
-  - Build dashboards to your heart's content
+  - In Superset run the following sql query found in dedup_bus_status_table.sql file to created a deduplicated version of the dataset
+  - Build dashboards to your heart's content based on the deduplicated dataset we just created
 ## 10. Stop Streaming Project
   - For the execute_pyspark.sh script you were running in the terminal, press Ctrl+c to stop the script from running
   - For the kafka consumer you were running, also press Ctrl+c to stop the consumer from listening
