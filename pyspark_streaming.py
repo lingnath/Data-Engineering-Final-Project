@@ -40,11 +40,11 @@ if __name__ == "__main__":
     .config("spark.jars", "../jars/hadoop-aws-3.3.3.jar,../jars/aws-java-sdk-bundle-1.12.451.jar") \
     .getOrCreate()
 
-    # Enabling Spark to read s3 bucket via AWS access and secret access key
+    # Enabling Spark to read S3 bucket via AWS access and secret access key
     spark._jsc.hadoopConfiguration().set("spark.hadoop.fs.s3a.access.key", ACCESS_KEY)
     spark._jsc.hadoopConfiguration().set("spark.hadoop.fs.s3a.secret.key", SECRET_KEY)
 
-    # Reading schema from s3 bucket
+    # Reading schema from S3 bucket
     schema = spark.read.json(f's3a://{s3_bucket}/artifacts/bus_status_schema.json').schema
 
     # Reading spark streaming from kafka topic in our docker container
@@ -76,7 +76,7 @@ if __name__ == "__main__":
        'hoodie.insert.shuffle.parallelism': 100
    }
 
-    # Creating output s3 path
+    # Creating output S3 path
     s3_path = f"s3a://{s3_bucket}/output/"
 
     # Configuring hudi write
@@ -86,5 +86,5 @@ if __name__ == "__main__":
        .mode("append") \
        .save(s3_path)
 
-    # Writing to s3 bucket
+    # Writing to S3 bucket
     transform_df.writeStream.option("checkpointLocation", checkpoint_location).queryName("wcd-bus-streaming").foreachBatch(write_batch).start().awaitTermination()
