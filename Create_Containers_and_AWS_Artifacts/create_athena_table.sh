@@ -5,7 +5,7 @@ aws_region=$(cat ../config_file.toml | grep 'region' | awk -F "=" '{print $2}' |
 athena_database_name=$(cat ../config_file.toml | grep 'athena_db' | awk -F "=" '{print $2}' | tr -d "'" | tr -d " ")
 athena_table_name=$(cat ../config_file.toml | grep 'athena_table' | awk -F "=" '{print $2}' | tr -d "'" | tr -d " ")
 
-# Create the athena table for this project
+# Creates the athena table for this project
 aws athena start-query-execution \
 --query-string "CREATE EXTERNAL TABLE IF NOT EXISTS ${athena_database_name}.${athena_table_name} (
   record_id int,
