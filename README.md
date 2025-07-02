@@ -12,21 +12,27 @@
   - 100 GB of EBS storage
 ## 3. Setup Folder and Files
   - Copy the files from this repository into your EC2 instance folders
-  - Go into the Software_Installations folder and run "chmod +x *.sh" so that all shell script files are executable
-  - Run the software installation files in the following order: install_packages.sh -> install_docker.sh -> install_pyspark.sh
+  - Go into the Software_Installations folder and run ```chmod +x *.sh``` so that all shell script files are executable
+  - Run the software installation files in the following order: ```./install_packages.sh``` -> ```install_docker.sh``` -> ```install_pyspark.sh```
   - Run aws configure to set up aws account on the EC2 instance
+    ```
     - AWS Access Key ID [None]: {access key}
     - AWS Secret Access Key [None]: {secret access key}
     - Default region name [None]: {aws region your EC2 is in}
     - Default output format [None]: json
+    ```
   - Ensure the aws account user has the following policies attached
+    ```
     - AmazonEC2FullAccess
     - AmazonAthenaFullAccess
     - AmazonS3FullAccess
     - IAMFullAccess
+    ```
   - In the main folder, create a .env file in the following format:
+  ```
   <br>ACCESS_KEY=''
   <br>SECRET_KEY=''
+  ```
   - Enter your credentials in the .env file
   - In the config_file.toml, enter the fields according to what you want
   - (Optional) In Superset there is an option to create a map such that you can render streets and other cool features in your dashboard. This is possible since we have geodata (longitude and latitude) in our dataset. To do this, you need to create a mapbox account and create an access token.
