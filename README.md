@@ -13,7 +13,7 @@
 ## 3. Setup Folder and Files
   - Copy the files from this repository into your EC2 instance folders
   - Go into the Software_Installations folder and run ```chmod +x *.sh``` so that all shell script files are executable
-  - Run the software installation files in the following order: ```./install_packages.sh``` -> ```install_docker.sh``` -> ```install_pyspark.sh```
+  - Run the software installation files in the following order: ```./install_packages.sh``` -> ```./install_docker.sh``` -> ```./install_pyspark.sh```
   - Run aws configure to set up aws account on the EC2 instance
     ```
     - AWS Access Key ID [None]: {access key}
